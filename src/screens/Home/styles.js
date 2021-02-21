@@ -18,7 +18,7 @@ export default StyleSheet.create({
     color: '#ffe919',
   },
   textInput: {
-    color: 'white',
+    color: 'rgba(255,255,255,0.8)',
     marginHorizontal: 20,
     textAlign: 'center',
     fontSize: 20,
@@ -38,5 +38,9 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
+  },
+  scroll: {
+    marginVertical: 20,
+    paddingHorizontal: 20,
   },
 });

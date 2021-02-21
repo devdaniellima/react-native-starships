@@ -12,10 +12,33 @@ const ItemStarship = (props) => {
 
   return (
     <View style={Styles.card}>
-      <Text>{starship.name}</Text>
-      <Text>Consumables</Text>
-      <Text>{starship.consumables}</Text>
-      <Text>{steps ? steps : 'Informações insuficientes'}</Text>
+      <Text style={Styles.textName}>{starship.name}</Text>
+      <View style={Styles.viewRow}>
+        <Text style={Styles.title}>MGLT</Text>
+        <Text
+          style={
+            starship.MGLT !== 'unknown' ? Styles.subTitle : Styles.noInfoUnknown
+          }>
+          {starship.MGLT !== 'unknown' ? starship.MGLT : '---'}
+        </Text>
+      </View>
+      <View style={Styles.viewRow}>
+        <Text style={Styles.title}>Consumables</Text>
+        <Text
+          style={
+            starship.consumables !== 'unknown'
+              ? Styles.subTitle
+              : Styles.noInfoUnknown
+          }>
+          {starship.consumables !== 'unknown' ? starship.consumables : '---'}
+        </Text>
+      </View>
+      <View style={Styles.viewRow}>
+        <Text style={Styles.title}>Steps</Text>
+        <Text style={steps !== '' ? Styles.steps : Styles.noInfo}>
+          {steps !== '' ? steps : 'Insufficient information'}
+        </Text>
+      </View>
     </View>
   );
 };

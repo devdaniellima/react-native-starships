@@ -37,7 +37,8 @@ const Home = (props) => {
     }
   };
 
-  const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
+  const isCloseToBottom = (prop) => {
+    const {layoutMeasurement, contentOffset, contentSize} = prop;
     const paddingToBottom = 20;
     return (
       layoutMeasurement.height + contentOffset.y >=
@@ -60,8 +61,9 @@ const Home = (props) => {
           <TextInput
             style={Styles.input}
             keyboardType="numeric"
+            value={distance ? Number(distance).toLocaleString('pt-BR') : ''}
             onChangeText={(text) => {
-              setDistance(text);
+              setDistance(text.replace(/[,|.]/g, ''));
             }}
           />
         </View>
@@ -69,23 +71,21 @@ const Home = (props) => {
         <ScrollView
           onScroll={({nativeEvent}) => {
             if (isCloseToBottom(nativeEvent)) {
-              alert('fim');
+              getStarships();
             }
           }}
           scrollEventThrottle={400}
-          style={{
-            borderColor: 'white',
-            borderWidth: 1,
-            marginVertical: 20,
-            paddingHorizontal: 20,
-          }}>
+          style={Styles.scroll}>
           {starships.list.map((item, index) => {
-            // console.log(item.name, item.MGLT, item.consumables);
             return (
               <ItemStarship
                 key={index}
                 starship={item}
-                steps={stepsByMGLT(distance, item.MGLT, item.consumables)}
+                steps={stepsByMGLT(
+                  distance.replace(/[,|.]/g, ''),
+                  item.MGLT,
+                  item.consumables,
+                )}
               />
             );
           })}
