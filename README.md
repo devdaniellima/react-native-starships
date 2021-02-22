@@ -1,6 +1,6 @@
 # Project Starships
 
-This project was developed in react native and executed in Android environment, it is motivated to test the functioning of redux-saga, axios, and scrolls events using the .
+This project was developed in react native and executed in Android environment, it is motivated to test the functioning of redux-saga, axios, and scrolls events using the `swapi.dev` api.
 
 ## Execution
 
